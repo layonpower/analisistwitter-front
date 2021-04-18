@@ -3,46 +3,43 @@ import { Row, Col, Card, CardTitle, Badge, CardBody, Table, Alert } from 'reacts
 
 import { FaFeather } from 'react-icons/fa';
 
-import { getAllPosts } from "../../utils/apicalls.js";
-import { getDateInStrFormat } from "../../utils/utils.js";
 
-export default function PostList(){
+import { getTweet } from "../../utils/apicalls.js";
 
-  const [posts, setPosts] = useState([]);
+export default function OneTweet(){
 
-  const getPosts = () => {
-    getAllPosts().then((posts) => {
-      setPosts(posts);
+  const [tweets, setPosts] = useState([]);
+
+  const getTweets = () => {
+    getTweet().then((tweets) => {
+      setPosts(tweets);
     });
   }
 
   useEffect(() =>{
-    getPosts();
+    getTweets();
   },[]);
 
   return (
     <div>
-      <CardTitle tag="center"><Alert color="info"><strong>Posts publicados </strong><Badge pill>{posts.length}</Badge></Alert></CardTitle>
+      <CardTitle tag="center"><Alert color="info"><strong>Tweets </strong><Badge pill>{tweets.length}</Badge></Alert></CardTitle>
       <Table>
         <tbody>
-          { posts.map((post, index) => {
+          { tweets.map((tweet, index) => {
             return(
               <div>
                 <Alert color="dark">
                   <Row>
                     <Col>
-                      <CardTitle tag="h5"><FaFeather /> {post.title}</CardTitle>
+                      <CardTitle tag="h5"><FaFeather /> {tweet.id}</CardTitle>
                       <Card>
                         <CardBody>
                           <Row>
                             <Col>
-                              {post.description}
+                              {tweet.text}
                             </Col>
                           </Row>
                           <Row>
-                            <Col align="right">
-                              <small>{getDateInStrFormat(new Date(post.publicationdate))} - {post.user.username}</small>
-                            </Col>
                           </Row>
                         </CardBody>
                       </Card>

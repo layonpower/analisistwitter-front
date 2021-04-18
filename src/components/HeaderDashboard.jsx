@@ -22,6 +22,9 @@ export default function HeaderDashboard(props){
             <NavLink href="#" onClick={() => props.onShow(3)}>{sessionStorage.getItem('username')}</NavLink>
           </NavItem>
           <NavItem>
+            <NavLink href="#" onClick={() => props.onShow(4)}>Tweets</NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink href="#" id="tooltip_logout" onClick={ props.onLogout }><FaSignOutAlt />
             <Tooltip placement="bottom" isOpen={tooltipOpen} target="tooltip_logout" toggle={() => setTooltipOpen(!tooltipOpen)}>
               Salir

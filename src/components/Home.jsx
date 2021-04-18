@@ -4,6 +4,7 @@ import {Container, Row, Col } from 'reactstrap';
 import HeaderDashboard from './HeaderDashboard';
 import MyPostList from './posts/MyPostList';
 import PostList from './posts/PostList';
+import OneTweet from './twitter/OneTweet';
 
 export default function Home(props){
 
@@ -22,7 +23,11 @@ export default function Home(props){
     }else if (option === 3){
         //TODO Show UserEdit component!
         alert('Usuario: '+sessionStorage.getItem('username')+"\nRol: "+sessionStorage.getItem('role'));
-    }
+    }else if (option === 4){
+      setShow(<OneTweet />);
+      
+  }
+    
   }
 
   if (sessionStorage.getItem("username") === null){

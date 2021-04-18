@@ -7,7 +7,8 @@ export {
   postNewPost,
   putExistingPost,
   deletePost,
-  postNewUser
+  postNewUser,
+  getTweet
 };
 
 function login(username, password) {
@@ -52,4 +53,9 @@ function putExistingPost(idpost, title, description) {
 
 function deletePost(idpost) {
   return API.delete('/posts/'+idpost).then(result => result.data);
+}
+
+
+function getTweet() {
+  return API.get('/tweets').then(res => res.data);
 }
