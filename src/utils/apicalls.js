@@ -8,7 +8,8 @@ export {
   putExistingPost,
   deletePost,
   postNewUser,
-  getTweet
+  getTweet,
+  getAccount
 };
 
 function login(username, password) {
@@ -56,6 +57,10 @@ function deletePost(idpost) {
 }
 
 
-function getTweet() {
-  return API.get('/tweets').then(res => res.data);
+function getTweet(idTweet) {
+  return API.get('/tweets/'+idTweet).then(res => res.data);
+}
+
+function getAccount(username) {
+  return API.get('/accounts/'+username).then(res => res.data);
 }

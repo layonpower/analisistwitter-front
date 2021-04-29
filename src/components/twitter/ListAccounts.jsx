@@ -5,26 +5,24 @@ import { useForm } from 'react-hook-form';
 import { FaFeather } from 'react-icons/fa';
 
 
-import { getTweet } from "../../utils/apicalls.js";
+import { getAccount } from "../../utils/apicalls.js";
 
-export default function OneTweet(){
+export default function ListAccounts(){
 
 
   const [searchTerm, setSearchTerm] = useState("");
   //const [searchResults, setSearchResults] = React.useState([]);
   const [tweets, setPosts] = useState([]);
 
-  const {register, errors, handleSubmit} = useForm();
 
   const handleChange = e => {
     //alert(e.target.value);
     setSearchTerm(e.target.value);
   };
 
-  const getTweets = (term) => {
-    //getTweet('1370805087254290432').then((tweets) => {
+  const getAccounts = (term) => {
       if (term.length > 3) {
-        getTweet(term).then((tweets) => {
+        getAccount(term).then((tweets) => {
         setPosts(tweets);
         console.log("front");
         console.log(tweets);
@@ -32,14 +30,8 @@ export default function OneTweet(){
   }
   }
 
-  /*useEffect(() =>{
-    getTweets();
-  },[]);
-  */
-
   useEffect(() => {
-    //if (searchTerm)
-      getTweets(searchTerm);
+    getAccounts(searchTerm);
   
    
   }, [searchTerm]);
@@ -51,7 +43,7 @@ export default function OneTweet(){
     <div>
       <input 
                 //id="key"
-                placeholder="id tweet..."
+                placeholder="cuenta..."
                 //onChange={handleChange}
                 type="text"
                 onChange={handleChange}
@@ -78,13 +70,13 @@ export default function OneTweet(){
                         <CardBody>
                           <Row>
                             <Col>
-                              { tweet.title === 'Not Found Error' ? '' :  tweet.text
+                              { tweet.title === 'Not Found Error' ? '' :  tweet.name
                               }
                             </Col>
                           </Row>
                           <Row>
                             <Col>
-                              { tweet.title === 'Not Found Error' ? '' :  tweet.public_metrics.retweet_count
+                              { //tweet.title === 'Not Found Error' ? '' :  tweet.public_metrics.followers_count
                               }
                             </Col>
                           </Row>

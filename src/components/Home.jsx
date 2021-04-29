@@ -5,6 +5,7 @@ import HeaderDashboard from './HeaderDashboard';
 import MyPostList from './posts/MyPostList';
 import PostList from './posts/PostList';
 import OneTweet from './twitter/OneTweet';
+import ListAccounts from './twitter/ListAccounts';
 
 export default function Home(props){
 
@@ -25,8 +26,9 @@ export default function Home(props){
         alert('Usuario: '+sessionStorage.getItem('username')+"\nRol: "+sessionStorage.getItem('role'));
     }else if (option === 4){
       setShow(<OneTweet />);
-      
-  }
+    }else if (option === 5){
+      setShow(<ListAccounts />);
+    }
     
   }
 
