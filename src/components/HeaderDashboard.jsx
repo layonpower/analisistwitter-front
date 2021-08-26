@@ -28,6 +28,9 @@ export default function HeaderDashboard(props){
             <NavLink href="#" onClick={() => props.onShow(5)}>Cuentas</NavLink>
           </NavItem>
           <NavItem>
+            <NavLink href="#" onClick={() => props.onShow(6)}>Resultados</NavLink>
+          </NavItem>
+          <NavItem>
             <NavLink href="#" id="tooltip_logout" onClick={ props.onLogout }><FaSignOutAlt />
             <Tooltip placement="bottom" isOpen={tooltipOpen} target="tooltip_logout" toggle={() => setTooltipOpen(!tooltipOpen)}>
               Salir

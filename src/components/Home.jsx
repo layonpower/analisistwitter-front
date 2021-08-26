@@ -6,6 +6,7 @@ import MyPostList from './posts/MyPostList';
 import PostList from './posts/PostList';
 import OneTweet from './twitter/OneTweet';
 import ListAccounts from './twitter/ListAccounts';
+import DashBoard from './twitter/DashBoard';
 
 export default function Home(props){
 
@@ -28,6 +29,9 @@ export default function Home(props){
       setShow(<OneTweet />);
     }else if (option === 5){
       setShow(<ListAccounts />);
+    }
+    else if (option === 6){
+      setShow(<DashBoard />);
     }
     
   }

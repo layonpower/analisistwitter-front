@@ -64,11 +64,15 @@ export default function ListAccounts(){
                   <Row>
                     <Col>
                       <CardTitle tag="h5"><FaFeather />
-                      {tweet.title === 'Not Found Error' ? 'Error, tweet no encontrado' :tweet.id}
+                      {tweet.title === 'Not Found Error' ? 'Error, usuario no encontrado' :tweet.id}
                       </CardTitle>
                       <Card>
                         <CardBody>
                           <Row>
+                            <Col>
+                              { tweet.title === 'Not Found Error' ? '' :  <img src={tweet.profile_image_url}></img>
+                              }
+                            </Col>
                             <Col>
                               { tweet.title === 'Not Found Error' ? '' :  tweet.name
                               }
