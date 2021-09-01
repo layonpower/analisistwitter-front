@@ -9,7 +9,8 @@ export {
   deletePost,
   postNewUser,
   getTweet,
-  getAccount
+  getAccount,
+  getTweetMetrics
 };
 
 function login(username, password) {
@@ -63,4 +64,8 @@ function getTweet(idTweet) {
 
 function getAccount(username) {
   return API.get('/accounts/'+username).then(res => res.data);
+}
+
+function getTweetMetrics(idTweet) {
+  return API.get('/tweetmetrics/'+idTweet).then(res => res.data);
 }
