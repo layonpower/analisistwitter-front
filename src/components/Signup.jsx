@@ -33,7 +33,7 @@ export default function Signup(props){
       <Row>
         <Col sm="12" md={{ size: 6, offset: 3 }}>
           <Card body>
-          <CardTitle tag="h4">Registro de nuevo usuario</CardTitle>
+          <CardTitle tag="h4">Nuevo usuario</CardTitle>
             <Form>
               <FormGroup>
                 <Label for="aUsername">Username</Label>
@@ -51,21 +51,11 @@ export default function Signup(props){
                 <Label for="aEmail">Email</Label>
                 <Input type="email" name="email" id="aEmail" placeholder="Introduce tu email" onChange={(e) => setEmail(e.target.value)} required/>
               </FormGroup>
-              <FormGroup>
-                <Label for="aRole">Rol</Label>
-                <Input type="select" name="role" id="aRole" onChange={(e) => setRole(e.target.value)}>
-                  <option value="subscriber">Suscriptor</option>
-                  <option value="admin">Administrador</option>
-                </Input>
-              </FormGroup>
-              <Button onClick={onSignup}>Registro</Button>
+
+              <Button onClick={onSignup}>Aceptar</Button>
             </Form>
           </Card>
-          <Row>
-            <Col tag="center">
-              <Link to="/"><strong className="text-muted">Login</strong></Link>
-            </Col>
-          </Row>
+
         </Col>
       </Row>
     </Container>

@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import {Container, Row, Col } from 'reactstrap';
 
 import HeaderDashboard from './HeaderDashboard';
-import MyPostList from './posts/MyPostList';
-import PostList from './posts/PostList';
 import OneTweet from './twitter/OneTweet';
 import ListAccounts from './twitter/ListAccounts';
 import DashBoard from './twitter/DashBoard';
+import UserDashBoard from './twitter/UserDashBoard';
+import Hashtag from './twitter/Hashtag';
+
+
 
 export default function Home(props){
 
-  const [show, setShow] = useState(<PostList />);
+  const [show, setShow] = useState(<ListAccounts />);
 
   const handleLogout = () => {
     sessionStorage.clear();
@@ -18,14 +20,7 @@ export default function Home(props){
   }
 
   const handleOnShow = (option) => {
-    if (option === 1){
-      setShow(<PostList />);
-    }else if (option === 2){
-      setShow(<MyPostList />);
-    }else if (option === 3){
-        //TODO Show UserEdit component!
-        alert('Usuario: '+sessionStorage.getItem('username')+"\nRol: "+sessionStorage.getItem('role'));
-    }else if (option === 4){
+    if (option === 4){
       setShow(<OneTweet />);
     }else if (option === 5){
       setShow(<ListAccounts />);
@@ -33,6 +28,10 @@ export default function Home(props){
     else if (option === 6){
       setShow(<DashBoard />);
     }
+    else if (option === 7){
+      setShow(<Hashtag />);
+    }
+
     
   }
 

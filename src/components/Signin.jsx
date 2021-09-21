@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, Container, Row, Col, Card, CardTitle, Alert } from 'reactstrap';
 
 import { login } from "../utils/apicalls.js";
-import PostList from './posts/PostList';
 
 export default function Signin(props){
 
@@ -37,27 +36,26 @@ export default function Signin(props){
     <Container>
       <Row>
         <Col xs= "9">
-          <PostList/>
         </Col>
         <Col xs="3">
           <Card body>
-          <CardTitle tag="h4">Login</CardTitle>
+          
             {loginMessage}
             <Form>
               <FormGroup>
-                <Label for="aUsername">Username</Label>
-                <Input type="text" name="username" id="aUsername" placeholder="Introduce tu username" onChange={(e) => setUsername(e.target.value)} required/>
+                <Label for="aUsername">Usuario</Label>
+                <Input type="text" name="username" id="aUsername"  onChange={(e) => setUsername(e.target.value)} required/>
               </FormGroup>
               <FormGroup>
-                <Label for="aPassword">Password</Label>
-                <Input type="password" name="password" id="aPassword" placeholder="Introduce tu password" onChange={(e) => setPassword(e.target.value)} required/>
+                <Label for="aPassword">Contraseña</Label>
+                <Input type="password" name="password" id="aPassword"  onChange={(e) => setPassword(e.target.value)} required/>
               </FormGroup>
               <Button onClick={onSignin}>Entrar</Button>
             </Form>
           </Card>
         <Row>
           <Col tag="center">
-            <Link to="/signup"><strong className="text-muted">Registrarse</strong></Link>
+            <Link to="/signup"><strong className="text-muted">Regístrate</strong></Link>
           </Col>
         </Row>
       </Col>

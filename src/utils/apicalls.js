@@ -10,7 +10,9 @@ export {
   postNewUser,
   getTweet,
   getAccount,
-  getTweetMetrics
+  getTweetMetrics,
+  getAccountMetrics,
+  getHashtagMetrics
 };
 
 function login(username, password) {
@@ -68,4 +70,16 @@ function getAccount(username) {
 
 function getTweetMetrics(idTweet) {
   return API.get('/tweetmetrics/'+idTweet).then(res => res.data);
+}
+
+/*/125770710/2021-07-01T00:00:00Z/2021-08-31T00:00:00Z
+return API.get('/accountmetrics/'+idUser).then(res => res.data);*/
+function getAccountMetrics(idUser,fini,ffin) {
+  //return API.get('/accountmetrics/'+idUser+'/2021-07-01T00:00:00Z/2021-08-31T00:00:00Z').then(res => res.data);
+  return API.get('/accountmetrics/'+idUser+'/'+fini+'/'+ffin).then(res => res.data);
+
+}
+
+function getHashtagMetrics(hashtag) {
+  return API.get('/hashtagmetrics/'+hashtag).then(res => res.data);
 }

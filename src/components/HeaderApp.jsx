@@ -10,18 +10,12 @@ var imgStyle = {
 
 export default function HeaderApp(){
   return(
-    <Container>
+    <Container >
       <Row>
         <Col>
-          <Navbar color="dark" light expand="md">
-            <NavbarBrand><h4 className="text-warning">Analisis rendimiento Twitter</h4></NavbarBrand>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="" target="_blank">
-                  <span className="text-white">beta </span>
-                </NavLink>
-              </NavItem>
-            </Nav>
+          <Navbar color="warning" light expand="md" >
+            <NavbarBrand><h4 className="text-white">Analisis rendimiento Twitter</h4></NavbarBrand>
+
           </Navbar>
         </Col>
       </Row>

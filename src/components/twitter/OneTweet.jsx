@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Row, Col, Card, CardTitle, Badge, CardBody, Table, Alert } from 'reactstrap';
+import { Button, Row, Col, Card, CardTitle, Badge, CardBody, Table, Alert } from 'reactstrap';
 import { useForm } from 'react-hook-form';
 
 import { FaFeather } from 'react-icons/fa';
@@ -7,12 +7,16 @@ import { FaFeather } from 'react-icons/fa';
 
 import { getTweet } from "../../utils/apicalls.js";
 
+import DashBoard from './DashBoard';
+
 export default function OneTweet(){
 
-
+  const [panel, setPanel] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
   //const [searchResults, setSearchResults] = React.useState([]);
   const [tweets, setPosts] = useState([]);
+   
+  const [id_tweet,  setId_Tweet] = useState("");
 
   const {register, errors, handleSubmit} = useForm();
 
@@ -20,6 +24,21 @@ export default function OneTweet(){
     //alert(e.target.value);
     setSearchTerm(e.target.value);
   };
+
+  const ShowPanel = (id, e) => {
+    e.preventDefault();
+    console.log('Panelaco');
+    setId_Tweet(id);
+    console.log('el id es'+id);
+    if (id!==undefined)
+      setPanel(1);
+    else{
+      return (
+        <Alert color="danger">Debe añadir un tuit para la obtención de métricas</Alert>
+
+      );
+    }
+  }
 
   const getTweets = (term) => {
     //getTweet('1370805087254290432').then((tweets) => {
@@ -45,14 +64,28 @@ export default function OneTweet(){
   }, [searchTerm]);
 
 
+  if (panel==1){
+
+    console.log("aqui va el dashboard");
+    console.log('encvío'+id_tweet);
+    return (
+            <DashBoard id = {id_tweet} />
+
+    );
+
+  }
+  else {
+    console.log("aqui va la búsqueda");
 
   return (
+
+
     
     <div>
-      <input 
-                //id="key"
-                placeholder="id tweet..."
-                //onChange={handleChange}
+      <label>Introduzca un Tweet</label>
+       <input 
+                placeholder="id"
+                value ={searchTerm}
                 type="text"
                 onChange={handleChange}
       >
@@ -60,8 +93,7 @@ export default function OneTweet(){
 
       
 
-      <CardTitle tag="center"><Alert color="info"><strong>Tweets </strong><Badge pill>{tweets.length}</Badge></Alert></CardTitle>
-      <Table>
+       <Table>
         <tbody>
           { tweets.map((tweet, index) => {
             
@@ -71,8 +103,8 @@ export default function OneTweet(){
                 <Alert color="dark">
                   <Row>
                     <Col>
-                      <CardTitle tag="h5"><FaFeather />
-                      {tweet.title === 'Not Found Error' ? 'Error, tweet no encontrado' :tweet.id}
+                      <CardTitle tag="h5">
+                      {tweet.title === 'Not Found Error' ? 'Tweet no encontrado' : 'Tweet id: '+tweet.id}
                       </CardTitle>
                       <Card>
                         <CardBody>
@@ -95,6 +127,12 @@ export default function OneTweet(){
                     </Col>
                   </Row>
                 </Alert>
+                  <Row>
+                      <Col>
+                        <Button onClick={(e) => ShowPanel(tweet.id, e)}>Métricas</Button>
+                      </Col>
+                    </Row>
+
               </div>)
           
             })}
@@ -102,4 +140,5 @@ export default function OneTweet(){
         </Table>
       </div>
     );
+  }
 }
